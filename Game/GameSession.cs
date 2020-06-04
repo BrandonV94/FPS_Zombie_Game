@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameSession : MonoBehaviour
 {
+    [SerializeField] Text ammoCountText = null;
+
+    public void Update()
+    {
+        DisplayCurrentAmmo();
+    }
+
     public void ReloadGame()
     {
         SceneManager.LoadScene(0);
@@ -14,5 +22,10 @@ public class GameSession : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void DisplayCurrentAmmo()
+    {
+        // TODO display ammo 
     }
 }
