@@ -14,6 +14,8 @@ public class WeaponSelector : MonoBehaviour
 
     void Update()
     {
+        currentWeaponName();
+
         int previousWeapon = currentWeapon;
 
         ProcessKeyInput();
@@ -24,7 +26,6 @@ public class WeaponSelector : MonoBehaviour
             SetWeaponActive();
         }
     }
-
 
     private void ProcessKeyInput()
     {
@@ -85,5 +86,10 @@ public class WeaponSelector : MonoBehaviour
             }
             weaponIndex++;
         }
+    }
+
+    public void currentWeaponName()
+    {
+        Console.Write("Current weapon is " + gameObject.name);
     }
 }

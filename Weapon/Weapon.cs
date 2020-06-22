@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject hitEffectVFX = null;
     [SerializeField] Ammo ammoSlot = null;
     [SerializeField] AmmoType ammoType;
+    [SerializeField] Text ammoCountText = null;
     [SerializeField] float timeBetweenShots = 1f; 
 
     bool canShoot = true;
@@ -23,10 +25,17 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        DisplayAmmo();
         if (Input.GetButtonDown("Fire1") && canShoot == true)
         {
             StartCoroutine(Shoot());
         }
+    }
+
+    private void DisplayAmmo()
+    {
+        int currentAmmo = ammoSlot.GetCurrentAmount(ammoType);
+        ammoCountText.text = currentAmmo.ToString();
     }
 
     IEnumerator Shoot()
